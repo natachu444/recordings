@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nate's Recordings</title>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Nate's Recordings" />
+  <meta property="og:description" content="A personal playlist of Nate's classical piano recordings." />
+  <meta property="og:image" content="album_art.png" />
+  <meta property="og:type" content="music.playlist" />
+  <meta property="og:url" content="https://yourdomain.com/nates_recordings_with_album_art.html" />
+
+  <!-- Apple Specific -->
+  <link rel="apple-touch-icon" href="album_art.png" />
+  <meta name="apple-mobile-web-app-title" content="Nate's Recordings">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+    }
+    .controls {
+      margin-bottom: 1rem;
+    }
+    .controls button {
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+    .player-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .album-art {
+      width: 300px;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+    li {
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+      word-wrap: break-word;
+    }
+    li.active {
+      background-color: #d0f0ff;
+    }
+    audio {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nate's Recordings</h1>
+  <div class="controls">
+    <button id="playAll">▶️ Play Playlist</button>
+    <button id="toggleShuffle">🔀 Shuffle: Off</button>
+    <button id="prevTrack">⏮️ Previous</button>
+    <button id="nextTrack">⏭️ Next</button>
+  </div>
+  <div class="player-wrapper">
+    <img src="album_art.png" alt="Album Art" class="album-art" id="albumArt" />
+    <audio id="audioPlayer" controls></audio>
+  </div>
+  <ul id="trackList">
+    <li data-src="https://www.dropbox.com/scl/fi/qxd6u4j55nuwgwhkywtmz/01-Beethoven_-Piano-Sonata-14-in-C-s.mp3?rlkey=78hxdxuzxfhtmk3aerh6opmyl&raw=1">Beethoven – Sonata No. 14 “Moonlight”</li>
+    <li data-src="https://www.dropbox.com/scl/fi/mfx4p9hwg54d6f7bkkusn/02-Beethoven_-Piano-Sonata-08-in-C-m.mp3?rlkey=0mpoe27k1zdwdmiuz5flculd6&raw=1">Beethoven – Sonata No. 8 “Pathétique”</li>
+    <li data-src="https://www.dropbox.com/scl/fi/ad34upx1gv080n6jlkhqg/03-Debussy_-Claire-de-lune-1905.mp3?rlkey=c7q6esxt2jnj96vivxen0jok8&raw=1">Debussy – Clair de Lune</li>
+  </ul>
+
+  <script>
+    const trackList = document.getElementById("trackList");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const tracks = Array.from(trackList.getElementsByTagName("li"));
+    const playAllBtn = document.getElementById("playAll");
+    const toggleShuffleBtn = document.getElementById("toggleShuffle");
+    const nextTrackBtn = document.getElementById("nextTrack");
+    const prevTrackBtn = document.getElementById("prevTrack");
+    const albumArt = document.getElementById("albumArt");
+
+    let currentTrack = 0;
+    let shuffle = false;
+
+    function playTrack(index) {
+      tracks.forEach((li) => li.classList.remove("active"));
+      const track = tracks[index];
+      if (!track) return;
+      track.classList.add("active");
+      audioPlayer.src = track.dataset.src;
+      audioPlayer.play();
+      currentTrack = index;
+    }
+
+    function getNextIndex() {
+      if (shuffle) {
+        let next;
+        do {
+          next = Math.floor(Math.random() * tracks.length);
+        } while (next === currentTrack);
+        return next;
+      } else {
+        return currentTrack + 1;
+      }
+    }
+
+    playAllBtn.addEventListener("click", () => {
+      playTrack(0);
+    });
+
+    toggleShuffleBtn.addEventListener("click", () => {
+      shuffle = !shuffle;
+      toggleShuffleBtn.textContent = shuffle ? "🔀 Shuffle: On" : "🔀 Shuffle: Off";
+    });
+
+    nextTrackBtn.addEventListener("click", () => {
+      const next = getNextIndex();
+      if (next < tracks.length) {
+        playTrack(next);
+      }
+    });
+
+    prevTrackBtn.addEventListener("click", () => {
+      if (shuffle) {
+        let prev;
+        do {
+          prev = Math.floor(Math.random() * tracks.length);
+        } while (prev === currentTrack);
+        playTrack(prev);
+      } else if (currentTrack > 0) {
+        playTrack(currentTrack - 1);
+      }
+    });
+
+    tracks.forEach((li, index) => {
+      li.addEventListener("click", () => playTrack(index));
+    });
+
+    audioPlayer.addEventListener("ended", () => {
+      const next = getNextIndex();
+      if (next < tracks.length) {
+        playTrack(next);
+      }
+    });
+  </script>
+</body>
+</html>
