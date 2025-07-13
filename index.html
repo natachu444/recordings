@@ -1,181 +1,219 @@
-
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nate's Recordings</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>body{font-family:'Inter',sans-serif;background:#f1f4f8;margin:0;color:#111}
-header{background:#1b3556;color:#fff;padding:1.5rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-h1{margin:0;font-size:1.8rem}
-main{max-width:900px;margin:auto;padding:1rem}
-.controls{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1rem}
-button{background:#fff;border:none;border-radius:6px;padding:.6rem 1.2rem;font-size:1rem;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.1)}
-button:hover{background:#dde3ea}
-ul{list-style:none;margin:0;padding:0;border:1px solid #ccd6e0;border-radius:8px;max-height:60vh;overflow:auto;background:#fff}
-li{padding:.6rem 1rem;border-bottom:1px solid #eef2f6;cursor:pointer}
-li.active{background:#d1e7ff;font-weight:600}
-audio{width:100%;max-width:600px;margin-top:1rem}
-.album-art{width:220px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.2);margin:1rem auto}
-</style></head><body>
-<header><h1>Nate's Recordings</h1></header>
-<main>
-<div class='controls'>
-<button id='playAll'>▶ Play</button><button id='prev'>⏮ Prev</button>
-<button id='next'>⏭ Next</button><button id='shuffleBtn'>🔀 Shuffle: Off</button>
-</div>
-<img src='album_art.png' alt='Album Art' class='album-art' id='art'>
-<audio id='player' controls></audio>
-<ul id='list'><li data-src="https://www.dropbox.com/scl/fi/mfx4p9hwg54d6f7bkkusn/02-Beethoven_-Piano-Sonata-08-in-C-m.mp3?raw=1">Beethoven – Piano Sonata No 8 “Pathétique” (I)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/ad34upx1gv080n6jlkhqg/03-Debussy_-Claire-de-lune-1905.mp3?raw=1">Debussy – Clair de lune</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/z0ta7z15tu86w1b5djnwh/04-Debussy_-Arabesque-No.-1-L.-66.mp3?raw=1">Debussy – Arabesque No 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/lngkf84gsaxgwnrlmgygk/05-Brahms_-Intermezzo-in-A-Major-Op.mp3?raw=1">Brahms – Intermezzo Op 118 No 2</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/kh7eb3ldzlgn9wv7u0ehh/06-Chopin_-Berceuse-Op-.-57-1843.mp3?raw=1">Chopin – Berceuse Op 57</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/agyv0zu3rdadcekz1920j/07-Chopin_-Nocturne-08-in-D-flat-Major-Op.-27-No.-2_-Larghetto-1837.mp3?raw=1">Chopin – Nocturne Op 27 No 2</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/qlq8oxos3cre2crweslrr/08-Chopin_-Nocturne-20-in-C-sharp-minor-Op.-Post._-Lento-con-gran-espressione-1830.mp3?raw=1">Chopin – Nocturne in C♯ minor (Op-posth.)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/sog2lwj4dn7drp4aox00k/09-Chopin_-Nocturne-03-In-B-Major-Op.-9-No.-3_-Allegretto-1832.mp3?raw=1">Chopin – Nocturne Op 9 No 3</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/brtdldinnuzaqzgvo7o4f/10-Chopin_-Nocturne-14-in-F-sharp-minor-Op.-48-No.-2_-Lento-1841.mp3?raw=1">Chopin – Nocturne Op 48 No 2</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/5i1ibf1f3p0v8lyauoddg/11-Rachmaninoff_-Prelude-in-D-Major-Op.-23-No.-4_-Andante-Cantabile-1903.mp3?raw=1">Rachmaninoff – Prelude Op 23 No 4</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/0ap197kavxm5gayakfjyp/12-Poulenc_-Novellete-1-in-C-Major.mp3?raw=1">Poulenc – Novelette No 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/5t9ibiiirma97vt7479ll/13-Ravel_-Piano-Concerto-in-G-Major_-2.-Adagio-assai-1931.mp3?raw=1">Ravel – Piano Concerto in G (Adagio)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/1zi3xzuvwsbpzfcadlbkh/14-Strauss-R._-Morgen-Op.-27-No..mp3?raw=1">Richard Strauss – “Morgen!” (Arr.)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/c6utzw34v15ikf0in3c4r/16-Brahms_-Rhapsodie-in-B-minor-Op..mp3?raw=1">Brahms – Rhapsody Op 79 No 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/21oe0uvzfjl0iex16rock/01-Schubert_-Impromptu-No.-3-in-G-Flat-Major-D.-899-Op.-90-Andante-1827.mp3?raw=1">Schubert – Impromptu Op 90 No 3</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/zfm5o56es2pzxj2tc6xeo/02-Chopin_-Prelude-In-C-Sharp-Minor-Op.-45-1841.mp3?raw=1">Chopin – Prelude Op 45 (C♯ minor)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/0z31jynifvt31i6wye1gl/03-Chopin_-Sonata-3-Op.-58_-3.-Largo-1844.mp3?raw=1">Chopin – Piano Sonata No 3 (Largo)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/awgdv8ajynvd1dpbq6fon/04-Mahler_-Adagietto-from-Symphony-5-1902.mp3?raw=1">Mahler – Adagietto (Symphony 5) arr.</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/qi5bouwiduo1nk4ntiunp/05-Brahms_-Piano-Sonata-3-in-F-minor.mp3?raw=1">Brahms – Piano Sonata No 3 (I)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/hwl9yht0zlyhjj7x95wx6/06-Brahms_-Ballade-Op.-10-no.-4-in-B-Major-1854.mp3?raw=1">Brahms – Ballade Op 10 No 4</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/t7pwhjohqhefomn7j9c8z/07-Brahms_-Intermezzo-in-A-Major-Op.-118-No.-2-1893.mp3?raw=1">Brahms – Intermezzo Op 118 No 2 (alt)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/7nnma1yu979qqsbsh6unj/08-Rachmaninoff_-l-gie-in-E-Flat-Minor-Op.-3-No.-1-1892.mp3?raw=1">Rachmaninoff – Élégie Op 3 No 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/3s27fnu9mfbkoy3xpsf4k/09-Alb-niz_-Iberia-Book-1_-1.-Evoc.mp3?raw=1">Albéniz – Iberia Book 1 “Evocación”</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/l6qcwtm74fd2b0otlxy34/10-Satie_-Gnossienne-1-1890.mp3?raw=1">Satie – Gnossienne No 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/b23d6nax35hcqpuf9jf7u/11-Satie_-Gnossienne-4-1891.mp3?raw=1">Satie – Gnossienne No 4</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/vwnx9fh2y04q79t4n7bi4/12-Sibelius_-Impromptu-No.-1-G-Minor.mp3?raw=1">Sibelius – Impromptu Op 5 No 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/iag79q6h2tmbkoo4cfhfh/01-Beethoven_-Symphony-6-Op.-68.mp3?raw=1">Beethoven – Symphony No 6 (Piano arr.)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/ougnc8u11o07oywp2q7cw/02-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-I.-Vivace-ma-non-troppo-Adagio-espressivo-Tempo-I.mp3?raw=1">Beethoven – Sonata Op 109 I</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/vqx2837pkg9weouaz4men/03-Beethoven_-Piano-Sonata-30-in-E.mp3?raw=1">Beethoven – Sonata Op 109 II</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/l82qt3mmlyewdgj99fk5f/04-Beethoven_-Piano-Sonata-30-in-E.mp3?raw=1">Beethoven – Sonata Op 109 III (Theme)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/gnjwlw4npn7ddlaurwcbl/05-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_2-Variation-1-Molto-espressivo.mp3?raw=1">Beethoven – Op 109 Var 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/mhhathy1xp6rbjo16chkh/06-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_3-Variation-2-Leggiermente.mp3?raw=1">Beethoven – Op 109 Var 2</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/4d9awdaiyjm6tw0hkayyc/07-Beethoven_-Piano-Sonata-30-in-E.mp3?raw=1">Beethoven – Op 109 Var 3</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/ikn3g2r5wtied0ttx1qah/08-Beethoven_-Piano-Sonata-30-in-E.mp3?raw=1">Beethoven – Op 109 Var 4</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/4g5w892cuxo035789ubtu/09-Beethoven_-Piano-Sonata-30-in-E.mp3?raw=1">Beethoven – Op 109 Var 5</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/350w08d97v3zmsiz6w35c/10-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_7-Variation-6-Cantabile.mp3?raw=1">Beethoven – Op 109 Var 6</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/xt9e045xxx6f169w0o7wr/11-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_8-Theme-Cantabile.mp3?raw=1">Beethoven – Op 109 Final Theme</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/jrzfnzhg66k0et0wiwtyb/12-Prokofiev_-Sonata-3-in-A-Minor.mp3?raw=1">Prokofiev – Sonata No 3</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/efe6aasl4yjy82wp6tdig/13-Debussy_-Pr-ludes-Book-1-1910-_-II.-Voiles-Veils-or-Sails.mp3?raw=1">Debussy – Préludes Bk 1 “Voiles”</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/xxt85hirlumcpvffa5yft/14-Debussy_-Pr-ludes-Book-2-1912.mp3?raw=1">Debussy – Préludes Bk 2 I</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/gfi6og2dfak5q0acpudl2/15-Debussy_-Pr-ludes-Book-2-1912.mp3?raw=1">Debussy – Préludes Bk 2 II</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/yyucjnf2p3s0551rxfha5/16-Debussy_-Pr-ludes-Book-2-1912.mp3?raw=1">Debussy – Préludes Bk 2 III</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/49c7dywtjlb6mi1riiw39/17-Chopin_-Nocturne-08-in-D-flat-Major-Op.-27-No.-2_-Larghetto-1837.mp3?raw=1">Chopin – Nocturne Op 27 No 2 (alt)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/e46gf3alyhfl8y9totu1t/18-Mahler_-I-Have-Become-Lost-to-the-World-1901-piano-transcription.mp3?raw=1">Mahler – “Ich bin der Welt …” arr.</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/kh8cp7nju7hjqr7g55bwu/01-Mozart_-Piano-Sonata-13-in-B-fla.mp3?raw=1">Mozart – Sonata K 333 I</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/ffosjijbpevse2ju3pqix/02-Mozart_-Piano-Sonata-13-in-B-flat-Major-K.-333-_-II_-Andante-cantabile.mp3?raw=1">Mozart – Sonata K 333 II</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/ktucakgjkrw8a9dayrz5j/03-Mozart_-Piano-Sonata-13-in-B-flat-Major-K.-333-_-III_-Allegretto-grazioso.mp3?raw=1">Mozart – Sonata K 333 III</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/ab630wufhw8gx1tpb3uag/05-Chopin_-Nocturne-16-in-E-flat-maj.mp3?raw=1">Chopin – Nocturne Op 55 No 2</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/f7m6ht0y2z3z4hc5ljoj4/07-Succari_-The-Night.mp3?raw=1">Succari – The Night</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/nw01v7if9jcbmg9ntg6b4/08-Wagner_-Die-Walk-re_-Wotan-s-Farewell-Magic-Fire.mp3?raw=1">Wagner – Wotan’s Farewell arr.</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/c4r8od5kcstcymj8n7m1b/09-Strauss_-Four-Last-Songs_-3.-Falling-Asleep-1948-Transcription.mp3?raw=1">Strauss – “Beim Schlafengehen” arr.</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/frou04se8y57tgvrxxod3/01-Chopin_-Two-Nocturnes-Op.-27-1837.mp3?raw=1">Chopin – Nocturne Op 27 No 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/0o6apyy3vlwqkw0hgcdd8/02-Bach_-Italian-Concerto-BWV.-971_-II.-Andante.mp3?raw=1">Bach – Italian Concerto II</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/3zzkcpnojdnb1woaptpq2/03-Mozart_-Piano-Sonata-no.-14-in-C-minor-K.-457_-II.-Adagio.mp3?raw=1">Mozart – Sonata K 457 II</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/6895ir576zpfu1gwjkxz5/04-Wagner_-Prelude-Redemption-Parsifal.mp3?raw=1">Wagner – Parsifal Prelude arr.</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/h4zr3pzyqcsnj7bt9pecr/05-Prokofiev_-Romeo-Juliet-Op.-75-No.-10-The-Farewell.mp3?raw=1">Prokofiev – Romeo & Juliet No 10</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/m8tkdjfkdme210bq40fdc/06-Satie_-Gnosienne-No.-3-1889.mp3?raw=1">Satie – Gnossienne No 3</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/a26mlactgoh40p24e1gfa/07-Debussy_-R-verie-1890.mp3?raw=1">Debussy – Rêverie</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/5m8m5qav8v5c2zr7981s5/08-Debussy_-Claire-de-lune-1905.mp3?raw=1">Debussy – Clair de lune (alt)</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/qm7wxkxlhlntqct7kp6bp/09-Crumb_-A-Little-Suite-for-Christmas-VI.mp3?raw=1">Crumb – Little Suite VI</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/vwnybvc0l4q69rko2vebm/Brahms_-Intermezzo-Op.-117-No.-2.mp3?raw=1">Brahms – Intermezzo Op 117 No 2</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/pf3ja9o2bo5gd4yi2fvqf/Debussy_-Estampes-1903-_-I.-Pagodes.mp3?raw=1">Debussy – Estampes I “Pagodes”</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/0a5s7117zi4839vydjgma/Debussy_-Estampes-1903-_-II.-La-soir-e-dans-Grenade.mp3?raw=1">Debussy – Estampes II “La soirée dans Grenade”</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/vwmwoe9ztpb6fkk3w4kgv/Debussy_-Estampes-1903-_-III.-Jardins-sous-la-pluie.mp3?raw=1">Debussy – Estampes III “Jardins sous la pluie”</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/jloc1g23hax48m6i3ajw8/Mahler_-Urlicht-Primeval-Light-from-Symphony-2.mp3?raw=1">Mahler – “Urlicht” arr.</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/xwlgwsghm1a5spap4ux2d/Puccini_-Tosca-Suite_-Act-1.mp3?raw=1">Puccini – Tosca Suite Act 1</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/9pqqfiy7o4jbrzh81w47t/Puccini_-Tosca-Suite_-Act-2.mp3?raw=1">Puccini – Tosca Suite Act 2</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/jf338ucrw1gujbmcvwfbp/Puccini_-Tosca-Suite_-Act-3.mp3?raw=1">Puccini – Tosca Suite Act 3</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/8ato1edf8uat9lbbhglaw/Puccini_-Tosca_-Vissi-d-arte-Youtube-Edition.mp3?raw=1">Puccini – “Vissi d’arte” arr.</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/d1mk66qmhp96mib47krum/Rachmaninoff_-Prelude-in-B-minor-Op.-32-no.-10-1910.mp3?raw=1">Rachmaninoff – Prelude Op 32 No 10</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/f0uudx9ixjsmbklczpkj0/Rachmaninoff_-Prelude-in-D-major-Op.-32-no.-10-1903.mp3?raw=1">Rachmaninoff – Prelude Op 32 No 4</li>
-
-<li data-src="https://www.dropbox.com/scl/fi/f9gs2eyk746m8umr6coo6/Urlicht-Fantasia.mp3?raw=1">Urlicht Fantasia</li></ul>
-</main>
-<script>
-const items=[...document.querySelectorAll('#list li')];
-const player=document.getElementById('player');let idx=0,shuffle=false;
-function play(i){items.forEach(li=>li.classList.remove('active'));idx=i;items[i].classList.add('active');player.src=items[i].dataset.src;player.play();}
-function next(){play(shuffle?Math.floor(Math.random()*items.length):(idx+1)%items.length);}
-function prev(){play(shuffle?Math.floor(Math.random()*items.length):(idx-1+items.length)%items.length);}
-document.getElementById('playAll').onclick=()=>play(0);
-document.getElementById('next').onclick=next;document.getElementById('prev').onclick=prev;
-document.getElementById('shuffleBtn').onclick=()=>{shuffle=!shuffle;document.getElementById('shuffleBtn').textContent=shuffle?'🔀 Shuffle: On':'🔀 Shuffle: Off';};
-items.forEach((li,i)=>li.onclick=()=>play(i));player.onended=next;
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nate's Recordings</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 { text-align: center; }
+    .controls {
+      margin-bottom: 1rem;
+    }
+    .controls button {
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+    .player-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .album-art {
+      width: 300px;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+    li {
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+      word-wrap: break-word;
+    }
+    li.active {
+      background-color: #d0f0ff;
+    }
+    audio {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nate's Recordings</h1>
+  <div class="controls">
+    <button id="playAll">▶️ Play Playlist</button>
+    <button id="toggleShuffle">🔀 Shuffle: Off</button>
+    <button id="prevTrack">⏮️ Previous</button>
+    <button id="nextTrack">⏭️ Next</button>
+  </div>
+  <div class="player-wrapper">
+    <img src="album_art.png" alt="Album Art" class="album-art" id="albumArt" />
+    <audio id="audioPlayer" controls></audio>
+  </div>
+  <ul id="trackList">
+<li data-src="https://www.dropbox.com/scl/fi/qxd6u4j55nuwgwhkywtmz/01-Beethoven_-Piano-Sonata-14-in-C-s.mp3?rlkey=78hxdxuzxfhtmk3aerh6opmyl&raw=1">Beethoven – Piano-Sonata-14-in-C-s</li>
+<li data-src="https://www.dropbox.com/scl/fi/mfx4p9hwg54d6f7bkkusn/02-Beethoven_-Piano-Sonata-08-in-C-m.mp3?rlkey=0mpoe27k1zdwdmiuz5flculd6&raw=1">Beethoven – Piano-Sonata-08-in-C-m</li>
+<li data-src="https://www.dropbox.com/scl/fi/ad34upx1gv080n6jlkhqg/03-Debussy_-Claire-de-lune-1905.mp3?rlkey=c7q6esxt2jnj96vivxen0jok8&raw=1">Debussy – Claire-de-lune-1905</li>
+<li data-src="https://www.dropbox.com/scl/fi/z0ta7z15tu86w1b5djnwh/04-Debussy_-Arabesque-No.-1-L.-66.mp3?rlkey=48ws18nywbw0z5770goyezox2&raw=1">Debussy – Arabesque-No.-1-L.-66</li>
+<li data-src="https://www.dropbox.com/scl/fi/lngkf84gsaxgwnrlmgygk/05-Brahms_-Intermezzo-in-A-Major-Op.mp3?rlkey=phbphm32phj6evtx863sy8rxc&raw=1">Brahms – Intermezzo-in-A-Major-Op.</li>
+<li data-src="https://www.dropbox.com/scl/fi/kh7eb3ldzlgn9wv7u0ehh/06-Chopin_-Berceuse-Op-.-57-1843.mp3?rlkey=4jop107xs2jyvkmq7vxak0dkb&raw=1">Chopin – Berceuse-Op.-.-57-1843</li>
+<li data-src="https://www.dropbox.com/scl/fi/agyv0zu3rdadcekz1920j/07-Chopin_-Nocturne-08-in-D-flat-Major-Op.-27-No.-2_-Larghetto-1837.mp3?rlkey=u1exqnipv16s5su8k0a1seqhl&raw=1">Chopin – Nocturne-08-in-D-flat-Major-Op.-27-No.-2 -Larghetto-1837</li>
+<li data-src="https://www.dropbox.com/scl/fi/qlq8oxos3cre2crweslrr/08-Chopin_-Nocturne-20-in-C-sharp-minor-Op.-Post._-Lento-con-gran-espressione-1830.mp3?rlkey=ccvyx4ahhy7brc6spz0v0me6v&raw=1">Chopin – Nocturne-20-in-C-sharp-minor-Op.-Post. -Lento-con-gran-espressione-1830</li>
+<li data-src="https://www.dropbox.com/scl/fi/sog2lwj4dn7drp4aox00k/09-Chopin_-Nocturne-03-In-B-Major-Op.-9-No.-3_-Allegretto-1832.mp3?rlkey=waa5pmccmu4hhsmgmlb5y8aqw&raw=1">Chopin – Nocturne-03-In-B-Major-Op.-9-No.-3 -Allegretto-1832</li>
+<li data-src="https://www.dropbox.com/scl/fi/brtdldinnuzaqzgvo7o4f/10-Chopin_-Nocturne-14-in-F-sharp-minor-Op.-48-No.-2_-Lento-1841.mp3?rlkey=r61t24zs7xl7qq5u3ru33inib&raw=1">Chopin – Nocturne-14-in-F-sharp-minor-Op.-48-No.-2 -Lento-1841</li>
+<li data-src="https://www.dropbox.com/scl/fi/5i1ibf1f3p0v8lyauoddg/11-Rachmaninoff_-Prelude-in-D-Major-Op.-23-No.-4_-Andante-Cantabile-1903.mp3?rlkey=1t6ketcipg1pqg0zu136mforu&raw=1">Rachmaninoff – Prelude-in-D-Major-Op.-23-No.-4 -Andante-Cantabile-1903</li>
+<li data-src="https://www.dropbox.com/scl/fi/0ap197kavxm5gayakfjyp/12-Poulenc_-Novellete-1-in-C-Major.mp3?rlkey=y07km918omkqaftbfei0w6kfk&raw=1">Poulenc – Novellete-1-in-C-Major</li>
+<li data-src="https://www.dropbox.com/scl/fi/5t9ibiiirma97vt7479ll/13-Ravel_-Piano-Concerto-in-G-Major_-2.-Adagio-assai-1931.mp3?rlkey=bsnjbddq3dcotqy4r8k2d1pl4&raw=1">Ravel – Piano-Concerto-in-G-Major -2.-Adagio-assai-1931</li>
+<li data-src="https://www.dropbox.com/scl/fi/1zi3xzuvwsbpzfcadlbkh/14-Strauss-R._-Morgen-Op.-27-No..mp3?rlkey=ul1grw1hyvyhd5es1mp0f5ikv&raw=1">Strauss – R. -Morgen-Op.-27-No.</li>
+<li data-src="https://www.dropbox.com/scl/fi/c6utzw34v15ikf0in3c4r/16-Brahms_-Rhapsodie-in-B-minor-Op..mp3?rlkey=bi9mjqycuyultodb8xbn14cql&raw=1">Brahms – Rhapsodie-in-B-minor-Op.</li>
+<li data-src="https://www.dropbox.com/scl/fi/21oe0uvzfjl0iex16rock/01-Schubert_-Impromptu-No.-3-in-G-Flat-Major-D.-899-Op.-90-Andante-1827.mp3?rlkey=pf62afllmaobzwj1zjy0czx6v&raw=1">Schubert – Impromptu-No.-3-in-G-Flat-Major-D.-899-Op.-90-Andante-1827</li>
+<li data-src="https://www.dropbox.com/scl/fi/zfm5o56es2pzxj2tc6xeo/02-Chopin_-Prelude-In-C-Sharp-Minor-Op.-45-1841.mp3?rlkey=nhp22xi6j0im1orbk554gstcg&raw=1">Chopin – Prelude-In-C-Sharp-Minor-Op.-45-1841</li>
+<li data-src="https://www.dropbox.com/scl/fi/0z31jynifvt31i6wye1gl/03-Chopin_-Sonata-3-Op.-58_-3.-Largo-1844.mp3?rlkey=o24l1te1afuhnne8tkb727via&raw=1">Chopin – Sonata-3-Op.-58 -3.-Largo-1844</li>
+<li data-src="https://www.dropbox.com/scl/fi/awgdv8ajynvd1dpbq6fon/04-Mahler_-Adagietto-from-Symphony-5-1902.mp3?rlkey=3bt044s8gohna4hjunzi4y7a1&raw=1">Mahler – Adagietto-from-Symphony-5-1902</li>
+<li data-src="https://www.dropbox.com/scl/fi/qi5bouwiduo1nk4ntiunp/05-Brahms_-Piano-Sonata-3-in-F-minor.mp3?rlkey=7v4nuf6k6dxv7lvhmv3u8op5i&raw=1">Brahms – Piano-Sonata-3-in-F-minor</li>
+<li data-src="https://www.dropbox.com/scl/fi/hwl9yht0zlyhjj7x95wx6/06-Brahms_-Ballade-Op.-10-no.-4-in-B-Major-1854.mp3?rlkey=8oamugymbhspb98lm90c6edyk&raw=1">Brahms – Ballade-Op.-10-No.-4-in-B-Major-1854</li>
+<li data-src="https://www.dropbox.com/scl/fi/t7pwhjohqhefomn7j9c8z/07-Brahms_-Intermezzo-in-A-Major-Op.-118-No.-2-1893.mp3?rlkey=39df80qkrutqqtatc5g1i5f9x&raw=1">Brahms – Intermezzo-in-A-Major-Op.-118-No.-2-1893</li>
+<li data-src="https://www.dropbox.com/scl/fi/7nnma1yu979qqsbsh6unj/08-Rachmaninoff_-l-gie-in-E-Flat-Minor-Op.-3-No.-1-1892.mp3?rlkey=6mgws9wx4c7xs6oviy6jqzuha&raw=1">Rachmaninoff – l-gie-in-E-Flat-Minor-Op.-3-No.-1-1892</li>
+<li data-src="https://www.dropbox.com/scl/fi/3s27fnu9mfbkoy3xpsf4k/09-Alb-niz_-Iberia-Book-1_-1.-Evoc.mp3?rlkey=2i8euqt9lbmb3mibjf5u4ivvs&raw=1">Alb – niz -Iberia-Book-1 -1.-Evoc</li>
+<li data-src="https://www.dropbox.com/scl/fi/l6qcwtm74fd2b0otlxy34/10-Satie_-Gnossienne-1-1890.mp3?rlkey=ls12z4zoe8nh1o376cxnubotz&raw=1">Satie – Gnossienne-1-1890</li>
+<li data-src="https://www.dropbox.com/scl/fi/b23d6nax35hcqpuf9jf7u/11-Satie_-Gnossienne-4-1891.mp3?rlkey=qjc1zwabc1ktjm3jvx08p51y6&raw=1">Satie – Gnossienne-4-1891</li>
+<li data-src="https://www.dropbox.com/scl/fi/vwnx9fh2y04q79t4n7bi4/12-Sibelius_-Impromptu-No.-1-G-Minor.mp3?rlkey=j2gww6gu043r9elyaz0wj36ud&raw=1">Sibelius – Impromptu-No.-1-G-Minor</li>
+<li data-src="https://www.dropbox.com/scl/fi/iag79q6h2tmbkoo4cfhfh/01-Beethoven_-Symphony-6-Op.-68.mp3?rlkey=dw7fhccziq656p7j8g0pjlt46&raw=1">Beethoven – Symphony-6-Op.-68</li>
+<li data-src="https://www.dropbox.com/scl/fi/ougnc8u11o07oywp2q7cw/02-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-I.-Vivace-ma-non-troppo-Adagio-espressivo-Tempo-I.mp3?rlkey=8cwybfx66q9qkb4v3r2m26hl7&raw=1">Beethoven – Piano-Sonata-30-in-E-Op.-109-1822- -I.-Vivace-ma-non-troppo-Adagio-espressivo-Tempo-I</li>
+<li data-src="https://www.dropbox.com/scl/fi/vqx2837pkg9weouaz4men/03-Beethoven_-Piano-Sonata-30-in-E.mp3?rlkey=khv9z0v7sy2ju02kpt31rec29&raw=1">Beethoven – Piano-Sonata-30-in-E</li>
+<li data-src="https://www.dropbox.com/scl/fi/l82qt3mmlyewdgj99fk5f/04-Beethoven_-Piano-Sonata-30-in-E.mp3?rlkey=56zrxlzdymlli9niqf272td91&raw=1">Beethoven – Piano-Sonata-30-in-E</li>
+<li data-src="https://www.dropbox.com/scl/fi/gnjwlw4npn7ddlaurwcbl/05-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_2-Variation-1-Molto-espressivo.mp3?rlkey=el68yo84mid8nbqlkt9udhaiq&raw=1">Beethoven – Piano-Sonata-30-in-E-Op.-109-1822- -III 2-Variation-1-Molto-espressivo</li>
+<li data-src="https://www.dropbox.com/scl/fi/mhhathy1xp6rbjo16chkh/06-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_3-Variation-2-Leggiermente.mp3?rlkey=6lovfrn3pn7vy8gbw1x2mccit&raw=1">Beethoven – Piano-Sonata-30-in-E-Op.-109-1822- -III 3-Variation-2-Leggiermente</li>
+<li data-src="https://www.dropbox.com/scl/fi/4d9awdaiyjm6tw0hkayyc/07-Beethoven_-Piano-Sonata-30-in-E.mp3?rlkey=ve16puywvrlac02ai95mio5z0&raw=1">Beethoven – Piano-Sonata-30-in-E</li>
+<li data-src="https://www.dropbox.com/scl/fi/ikn3g2r5wtied0ttx1qah/08-Beethoven_-Piano-Sonata-30-in-E.mp3?rlkey=dnw2092mpfw3e5kto8lvfiaa7&raw=1">Beethoven – Piano-Sonata-30-in-E</li>
+<li data-src="https://www.dropbox.com/scl/fi/4g5w892cuxo035789ubtu/09-Beethoven_-Piano-Sonata-30-in-E.mp3?rlkey=7t4lmu66rxee5w9tnz6a7e18q&raw=1">Beethoven – Piano-Sonata-30-in-E</li>
+<li data-src="https://www.dropbox.com/scl/fi/350w08d97v3zmsiz6w35c/10-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_7-Variation-6-Cantabile.mp3?rlkey=iu3sexdsif8r765zxi0vk9o7v&raw=1">Beethoven – Piano-Sonata-30-in-E-Op.-109-1822- -III 7-Variation-6-Cantabile</li>
+<li data-src="https://www.dropbox.com/scl/fi/xt9e045xxx6f169w0o7wr/11-Beethoven_-Piano-Sonata-30-in-E-Op.-109-1822-_-III_8-Theme-Cantabile.mp3?rlkey=5sz7ugerzyyzdx1xii4q9fa42&raw=1">Beethoven – Piano-Sonata-30-in-E-Op.-109-1822- -III 8-Theme-Cantabile</li>
+<li data-src="https://www.dropbox.com/scl/fi/jrzfnzhg66k0et0wiwtyb/12-Prokofiev_-Sonata-3-in-A-Minor.mp3?rlkey=kxiykek5855u0i1my7gvd63as&raw=1">Prokofiev – Sonata-3-in-A-Minor</li>
+<li data-src="https://www.dropbox.com/scl/fi/efe6aasl4yjy82wp6tdig/13-Debussy_-Pr-ludes-Book-1-1910-_-II.-Voiles-Veils-or-Sails.mp3?rlkey=k6423af1mqx4bqzqvli77jd8y&raw=1">Debussy – Pr-ludes-Book-1-1910- -II.-Voiles-Veils-or-Sails</li>
+<li data-src="https://www.dropbox.com/scl/fi/xxt85hirlumcpvffa5yft/14-Debussy_-Pr-ludes-Book-2-1912.mp3?rlkey=eytsh9ko6rlqbywopybvo6kaf&raw=1">Debussy – Pr-ludes-Book-2-1912</li>
+<li data-src="https://www.dropbox.com/scl/fi/gfi6og2dfak5q0acpudl2/15-Debussy_-Pr-ludes-Book-2-1912.mp3?rlkey=k70qv0m759d0j0oohqcdi14kp&raw=1">Debussy – Pr-ludes-Book-2-1912</li>
+<li data-src="https://www.dropbox.com/scl/fi/yyucjnf2p3s0551rxfha5/16-Debussy_-Pr-ludes-Book-2-1912.mp3?rlkey=krxu5p4fcft1oi2oiv9i52yaw&raw=1">Debussy – Pr-ludes-Book-2-1912</li>
+<li data-src="https://www.dropbox.com/scl/fi/49c7dywtjlb6mi1riiw39/17-Chopin_-Nocturne-08-in-D-flat-Major-Op.-27-No.-2_-Larghetto-1837.mp3?rlkey=imzdkxcsgk6lb03rjkooiiam5&raw=1">Chopin – Nocturne-08-in-D-flat-Major-Op.-27-No.-2 -Larghetto-1837</li>
+<li data-src="https://www.dropbox.com/scl/fi/e46gf3alyhfl8y9totu1t/18-Mahler_-I-Have-Become-Lost-to-the-World-1901-piano-transcription-Ich-bin-der-Welt-abhanden-gekommen.mp3?rlkey=2yuuq0uxst5cvjegyyhiasgi4&raw=1">Mahler – I-Have-Become-Lost-to-the-World-1901-piano-transcription-Ich-bin-der-Welt-abhanden-gekommen</li>
+<li data-src="https://www.dropbox.com/scl/fi/kh8cp7nju7hjqr7g55bwu/01-Mozart_-Piano-Sonata-13-in-B-fla.mp3?rlkey=s57g9nlnknxq39dcefig3gc7q&raw=1">Mozart – Piano-Sonata-13-in-B-fla</li>
+<li data-src="https://www.dropbox.com/scl/fi/ffosjijbpevse2ju3pqix/02-Mozart_-Piano-Sonata-13-in-B-flat-Major-K.-333-1783-_-II_-Andante-cantabile.mp3?rlkey=old67xfet7qle7pquhy9448mk&raw=1">Mozart – Piano-Sonata-13-in-B-flat-Major-K.-333-1783- -II -Andante-cantabile</li>
+<li data-src="https://www.dropbox.com/scl/fi/ktucakgjkrw8a9dayrz5j/03-Mozart_-Piano-Sonata-13-in-B-flat-Major-K.-333-1783-_-III_-Allegretto-grazioso.mp3?rlkey=nexdytd1ef8hzjarx6ec5ec8l&raw=1">Mozart – Piano-Sonata-13-in-B-flat-Major-K.-333-1783- -III -Allegretto-grazioso</li>
+<li data-src="https://www.dropbox.com/scl/fi/ab630wufhw8gx1tpb3uag/05-Chopin_-Nocturne-16-in-E-flat-maj.mp3?rlkey=ewt13jmtssmtan9bemp7fsn6k&raw=1">Chopin – Nocturne-16-in-E-flat-maj</li>
+<li data-src="https://www.dropbox.com/scl/fi/f7m6ht0y2z3z4hc5ljoj4/07-Succari_-The-Night.mp3?rlkey=88stzrhtaihsdev6o3xq58ryz&raw=1">Succari – The-Night</li>
+<li data-src="https://www.dropbox.com/scl/fi/nw01v7if9jcbmg9ntg6b4/08-Wagner_-Die-Walk-re_-Wotan-s-Farewell-and-the-Magic-Fire-Music-1856-Transcription-for-Piano-Solo.mp3?rlkey=hj7egk6dl9z4rnnie6zk9da00&raw=1">Wagner – Die-Walk-re -Wotan-s-Farewell-and-the-Magic-Fire-Music-1856-Transcription-for-Piano-Solo</li>
+<li data-src="https://www.dropbox.com/scl/fi/c4r8od5kcstcymj8n7m1b/09-Strauss_-Four-Last-Songs_-3.-Falling-Asleep-1948-Transcription-for-Piano-Solo.mp3?rlkey=cx6e6ntluz2beugn7m4uhzuhw&raw=1">Strauss – Four-Last-Songs -3.-Falling-Asleep-1948-Transcription-for-Piano-Solo</li>
+<li data-src="https://www.dropbox.com/scl/fi/frou04se8y57tgvrxxod3/01-Chopin_-Two-Nocturnes-Op.-27-1837.mp3?rlkey=721y482m2gjr9i0ks2gxy57cu&raw=1">Chopin – Two-Nocturnes-Op.-27-1837</li>
+<li data-src="https://www.dropbox.com/scl/fi/0o6apyy3vlwqkw0hgcdd8/02-Bach_-Italian-Concerto-BWV.-971_-II.-Andante-1735.mp3?rlkey=e80uxppbtp6wvpbamju049g92&raw=1">Bach – Italian-Concerto-BWV-971 -II.-Andante-1735</li>
+<li data-src="https://www.dropbox.com/scl/fi/3zzkcpnojdnb1woaptpq2/03-Mozart_-Piano-Sonata-no.-14-in-C-minor-K.-457_-II.-Adagio-1784.mp3?rlkey=v2bt8o5j8e0xi3taxlwycwq8b&raw=1">Mozart – Piano-Sonata-No.-14-in-C-minor-K.-457 -II.-Adagio-1784</li>
+<li data-src="https://www.dropbox.com/scl/fi/6895ir576zpfu1gwjkxz5/04-Wagner_-Prelude-Redemption-from-Parsifal-Transcription-for-Piano-Solo-1882.mp3?rlkey=tq9rww6u7zhwll1gd2wchh78a&raw=1">Wagner – Prelude-Redemption-from-Parsifal-Transcription-for-Piano-Solo-1882</li>
+<li data-src="https://www.dropbox.com/scl/fi/h4zr3pzyqcsnj7bt9pecr/05-Prokofiev_-Romeo-and-Juliet_-Ten-Pieces-for-Piano-Op.-75-no.-10-1937-_-The-Farewell.mp3?rlkey=xb1tkkl0bts7isqv4carhtwu1&raw=1">Prokofiev – Romeo-and-Juliet -Ten-Pieces-for-Piano-Op.-75-No.-10-1937- -The-Farewell</li>
+<li data-src="https://www.dropbox.com/scl/fi/m8tkdjfkdme210bq40fdc/06-Satie_-Gnosienne-No.-3-1889.mp3?rlkey=c3fqxoqgyonpy2yvcazuwguql&raw=1">Satie – Gnosienne-No.-3-1889</li>
+<li data-src="https://www.dropbox.com/scl/fi/a26mlactgoh40p24e1gfa/07-Debussy_-R-verie-1890.mp3?rlkey=jfrcs6umzs35ki1j80lf6s6rr&raw=1">Debussy – R-verie-1890</li>
+<li data-src="https://www.dropbox.com/scl/fi/5m8m5qav8v5c2zr7981s5/08-Debussy_-Claire-de-lune-1905.mp3?rlkey=ylcf8rzhup0d4ftgfvg3hw2zz&raw=1">Debussy – Claire-de-lune-1905</li>
+<li data-src="https://www.dropbox.com/scl/fi/qm7wxkxlhlntqct7kp6bp/09-Crumb_-A-Little-Suite-for-Christmas-A.-D.-1979_-VI.-Canticle-of-the-Holy-Night-1980.mp3?rlkey=k9n6u5zlycu98svye3pdf0ywy&raw=1">Crumb – A-Little-Suite-for-Christmas-A.-D.-1979 -VI.-Canticle-of-the-Holy-Night-1980</li>
+<li data-src="https://www.dropbox.com/scl/fi/vwnybvc0l4q69rko2vebm/Brahms_-Intermezzo-Op.-117-No.-2.mp3?rlkey=agt84tlw0a5aj65po2bmpw40c&raw=1">Brahms – Intermezzo-Op.-117-No.-2</li>
+<li data-src="https://www.dropbox.com/scl/fi/pf3ja9o2bo5gd4yi2fvqf/Debussy_-Estampes-1903-_-I.-Pagodes.mp3?rlkey=b7aa0mtrf5dhgntt9nzvb0597&raw=1">Debussy – Estampes-1903- -I.-Pagodes</li>
+<li data-src="https://www.dropbox.com/scl/fi/0a5s7117zi4839vydjgma/Debussy_-Estampes-1903-_-II.-La-soir-e-dans-Grenade.mp3?rlkey=xq7bce7ttugxdljwuvm56r0ag&raw=1">Debussy – Estampes-1903- -II.-La-soir-e-dans-Grenade</li>
+<li data-src="https://www.dropbox.com/scl/fi/vwmwoe9ztpb6fkk3w4kgv/Debussy_-Estampes-1903-_-III.-Jardins-sous-la-pluie.mp3?rlkey=21rbq0gjhbiu377dqjg81p3d3&raw=1">Debussy – Estampes-1903- -III.-Jardins-sous-la-pluie</li>
+<li data-src="https://www.dropbox.com/scl/fi/jloc1g23hax48m6i3ajw8/Mahler_-Urlicht-Primeval-Light-from-Symphony-2.mp3?rlkey=6tcbwv5sggiu4o82p9igkai6u&raw=1">Mahler – Urlicht-Primeval-Light-from-Symphony-2</li>
+<li data-src="https://www.dropbox.com/scl/fi/xwlgwsghm1a5spap4ux2d/Puccini_-Tosca-Suite_-Act-1.mp3?rlkey=bhbdwtcu3paqwnmzrcj5xzkfj&raw=1">Puccini – Tosca-Suite -Act-1</li>
+<li data-src="https://www.dropbox.com/scl/fi/9pqqfiy7o4jbrzh81w47t/Puccini_-Tosca-Suite_-Act-2.mp3?rlkey=bg1cueli093986con7ezlfqx1&raw=1">Puccini – Tosca-Suite -Act-2</li>
+<li data-src="https://www.dropbox.com/scl/fi/jf338ucrw1gujbmcvwfbp/Puccini_-Tosca-Suite_-Act-3.mp3?rlkey=qihbf6houkhtfmf7y31je56sj&raw=1">Puccini – Tosca-Suite -Act-3</li>
+<li data-src="https://www.dropbox.com/scl/fi/8ato1edf8uat9lbbhglaw/Puccini_-Tosca_-Vissi-d-arte-Youtube-Edition.mp3?rlkey=87ozbx6t9iqhq737tfjdiz27m&raw=1">Puccini – Tosca -Vissi-d-arte-Youtube-Edition</li>
+<li data-src="https://www.dropbox.com/scl/fi/d1mk66qmhp96mib47krum/Rachmaninoff_-Prelude-in-B-minor-Op.-32-no.-10-1910.mp3?rlkey=9ilrxahun6xjlprjt8rajczwa&raw=1">Rachmaninoff – Prelude-in-B-minor-Op.-32-No.-10-1910</li>
+<li data-src="https://www.dropbox.com/scl/fi/f0uudx9ixjsmbklczpkj0/Rachmaninoff_-Prelude-in-D-major-Op.-32-no.-10-1903.mp3?rlkey=som4xi4h5ihnd0nf8nvfm0663&raw=1">Rachmaninoff – Prelude-in-D-major-Op.-32-No.-10-1903</li>
+<li data-src="https://www.dropbox.com/scl/fi/f9gs2eyk746m8umr6coo6/Urlicht-Fantasia.mp3?rlkey=lpjr254uatk0b1ego22fmq01q&raw=1">Urlicht – Fantasia</li>
+  </ul>
+  <script>
+    const trackList = document.getElementById("trackList");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const tracks = Array.from(trackList.getElementsByTagName("li"));
+    const playAllBtn = document.getElementById("playAll");
+    const toggleShuffleBtn = document.getElementById("toggleShuffle");
+    const nextTrackBtn = document.getElementById("nextTrack");
+    const prevTrackBtn = document.getElementById("prevTrack");
+    const albumArt = document.getElementById("albumArt");
+
+    let currentTrack = 0;
+    let shuffle = false;
+
+    function playTrack(index) {
+      tracks.forEach((li) => li.classList.remove("active"));
+      const track = tracks[index];
+      if (!track) return;
+      track.classList.add("active");
+      audioPlayer.src = track.dataset.src;
+      audioPlayer.play();
+      currentTrack = index;
+    }
+
+    function getNextIndex() {
+      if (shuffle) {
+        let next;
+        do {
+          next = Math.floor(Math.random() * tracks.length);
+        } while (next === currentTrack);
+        return next;
+      } else {
+        return currentTrack + 1;
+      }
+    }
+
+    playAllBtn.addEventListener("click", () => {
+      playTrack(0);
+    });
+
+    toggleShuffleBtn.addEventListener("click", () => {
+      shuffle = !shuffle;
+      toggleShuffleBtn.textContent = shuffle ? "🔀 Shuffle: On" : "🔀 Shuffle: Off";
+    });
+
+    nextTrackBtn.addEventListener("click", () => {
+      const next = getNextIndex();
+      if (next < tracks.length) {
+        playTrack(next);
+      }
+    });
+
+    prevTrackBtn.addEventListener("click", () => {
+      if (shuffle) {
+        let prev;
+        do {
+          prev = Math.floor(Math.random() * tracks.length);
+        } while (prev === currentTrack);
+        playTrack(prev);
+      } else if (currentTrack > 0) {
+        playTrack(currentTrack - 1);
+      }
+    });
+
+    tracks.forEach((li, index) => {
+      li.addEventListener("click", () => playTrack(index));
+    });
+
+    audioPlayer.addEventListener("ended", () => {
+      const next = getNextIndex();
+      if (next < tracks.length) {
+        playTrack(next);
+      }
+    });
+  </script>
+</body>
+</html>
